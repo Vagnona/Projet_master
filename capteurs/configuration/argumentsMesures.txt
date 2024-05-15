@@ -1,0 +1,8 @@
+# Id agri
+1
+# Id champ
+1
+# Id ilot
+1
+# Simuler [0 = données des sondes, 1 = générées]
+0

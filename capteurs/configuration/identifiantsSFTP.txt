@@ -1,0 +1,8 @@
+# IP du serveur
+255.255.255.255
+# Port
+22
+# Nom d'utilisateur
+JohnDoe
+# Mot de passe
+Password

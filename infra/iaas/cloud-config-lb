@@ -1,0 +1,40 @@
+#cloud-config
+users:
+  - name: matth
+    passwd: $1$mM48WZHt$nCaFoxTmnWN.fgX1eJ.8I.
+    groups: users,wheel
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+bootcmd:
+  - loadkeys fr
+ssh_pwauth: true
+
+repo_update: true
+repo_upgrade: all
+yum_repos:
+  docker:
+    name: docker
+    baseurl: https://download.docker.com/linux/centos/9/$basearch/stable
+    enabled: true
+    gpgcheck: true
+    gpgkey: https://download.docker.com/linux/centos/gpg
+
+package_upgrade: true
+packages:
+  - vim
+  - git
+  - nmap-ncat
+  - docker-ce
+
+runcmd:
+  - systemctl enable docker
+  - systemctl start docker
+  - git clone https://user:glpat-sEbppxiL7vYxdhy7-QXg@git.unistra.fr/fseel/projet-master-23-24.git /pm
+  - cd /pm
+  - git checkout infra
+  - cd infra/iaas/
+  - docker compose up -d
+  - chmod 777 pull.sh
+  - cp webhook.service /etc/systemd/system/
+  - systemctl enable webhook
+  - systemctl start webhook

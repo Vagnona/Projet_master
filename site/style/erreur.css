@@ -1,0 +1,42 @@
+/* Corps */
+	/* Section message d'erreur */
+.containerSecVerti > p {
+	margin: 10vh;
+}
+.containerSecVerti > a {
+	padding: 10px 5%;
+	text-align: center;
+	background-color: rgba(4, 169, 109, 0.6);
+	border-radius: 10px;
+	box-shadow: 0 15px 20px -15px #cecece;
+}
+.containerSecVerti > a:hover {
+	background-color: rgba(4, 169, 109, 0.8);
+}
+.containerSecVerti > a:active {
+	background-color: rgba(4, 169, 109, 1);
+}
+a {
+	color: #000000;
+	text-decoration: none;
+}
+
+
+/* Thème sombre */
+@media (prefers-color-scheme: dark) {
+	/* Corps */
+		/* Section message d'erreur */
+	.containerSecVerti > a {
+		background-color: rgba(4, 169, 109, 0.8);
+		box-shadow: 0 15px 20px -15px #080808;
+	}
+	.containerSecVerti > a:hover {
+		background-color: rgba(4, 169, 109, 1);
+	}
+	.containerSecVerti > a:active {
+		background-color: rgba(4, 169, 109, 1);
+	}
+	a {
+		color: #ffffff;
+	}
+}

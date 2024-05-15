@@ -1,0 +1,108 @@
+# This file is generated from information provided by the datasource.  Changes
+# to it will not persist across an instance reboot.  To disable cloud-init's
+# network configuration capabilities, write a file
+# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
+# network: {config: disabled}
+network:
+  version: 2
+  ethernets:
+    ens3:
+      dhcp4: true
+      addresses: []
+      match:
+          macaddress: fa:16:3e:5b:ff:0e
+      set-name: ens3
+      mtu: 1400
+    ens42:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: 	fa:16:3e:04:45:c5
+      set-name: ens42
+      mtu: 1400
+    ens43:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:fb:58:db
+      set-name: ens43
+      mtu: 1400
+    ens44:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:95:2d:6c
+      set-name: ens44
+      addresses: 
+        - "10.3.0.1/16"
+      routes:
+        - to: 10.1.0.0/16
+          via: 10.1.255.254
+          metric: 100
+      routes:
+        - to: 10.0.0.0/8
+          via: 10.1.255.254
+          metric: 120
+      nameservers:
+        search: [pm2023]
+        addresses: [10.1.255.254]
+      mtu: 1400
+    ens45:
+      dhcp4: false
+      addresses: []
+      mtu: 1400
+    ens46:
+      dhcp4: false
+      addresses: []
+      mtu: 1400
+    ens47:
+      dhcp4: false
+      addresses: []
+      mtu: 1400
+    ens48:
+      dhcp4: false
+      addresses: []
+      mtu: 1400
+    ens49:
+      dhcp4: false
+      addresses: []
+      mtu: 1400
+    ens410:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:21:1e:54
+      set-name: ens410
+      mtu: 1400
+    ens411:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:c7:8b:0f
+      set-name: ens411
+      mtu: 1400
+    ens412:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:64:31:6d
+      set-name: ens412
+      mtu: 1400
+    ens413:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:22:4b:a8
+      set-name: ens413
+      mtu: 1400
+    ens414:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:0f:b2:5f
+      set-name: ens414
+      mtu: 1400
+    ens415:
+      dhcp4: false
+      addresses: []
+      mtu: 1400

@@ -1,0 +1,37 @@
+frr version 8.5.2
+frr defaults traditional
+hostname pve3
+log syslog informational
+no ipv6 forwarding
+bgp no-rib
+service integrated-vtysh-config
+!
+router bgp 20231
+ bgp router-id 10.0.0.4
+ bgp log-neighbor-changes
+ no bgp default ipv4-unicast
+ bgp cluster-id 10.0.0.4
+ neighbor iaas peer-group
+ neighbor iaas remote-as 20232
+ neighbor iaas remote-as external
+ neighbor iaas update-source 10.0.0.4
+ neighbor iaas capability extended-nexthop
+ neighbor 10.0.1.2 peer-group iaas
+ bgp listen range 10.0.1.0/24 peer-group iaas
+ neighbor c315 peer-group
+ neighbor c315 remote-as 20231
+ neighbor c315 remote-as internal
+ neighbor c315 update-source 10.0.0.4
+ neighbor c315 capability extended-nexthop
+ neighbor 10.0.0.2 peer-group c315
+ neighbor 10.0.0.3 peer-group c315
+ bgp listen range 10.0.0.0/24 peer-group c315
+ !
+ address-family l2vpn evpn
+  neighbor c315 activate
+  neighbor iaas activate
+#  neighbor c315 route-reflector-client
+  advertise-all-vni
+ exit-address-family
+exit
+!

@@ -1,0 +1,28 @@
+/* Section */
+.containerSecVerti > h1 {
+	font-size: 22px;
+}
+.containerSecVerti  > h2 {
+	width: 80%;
+	margin-top: 20px;
+	margin-bottom: 5px;
+	font-size: 18px;
+	font-weight: normal;
+	text-align: center;
+	font-weight: bolder;
+}
+.containerSecVerti  > p {
+	width: 90%;
+	font-size: 15px;
+}
+
+
+/* Version tablette et mobile */
+@media screen and (max-width: 950px) {
+	/* Header */
+		/* Sous-sections */
+	header > section:last-child {
+		width: 100%;
+		justify-content: right;
+	}
+}

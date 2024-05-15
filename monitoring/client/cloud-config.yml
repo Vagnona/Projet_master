@@ -1,0 +1,43 @@
+#cloud-config
+users:
+  - name: nderousseaux
+    passwd: $1$Zk0NDqEp$DRjhMrBOD5CoFrfyp.dkr/
+    groups: users,wheel
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+bootcmd:
+  - loadkeys fr
+
+repo_update: true
+repo_upgrade: all
+
+package_upgrade: true
+packages:
+  - wget
+  - git
+
+runcmd:
+  - cd /root
+
+  # Debug SSH -> DO NOT USE IN PRODUCTION
+  - sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+  - systemctl restart sshd
+
+  # On met le git sur le serveur
+  - git clone https://user:glpat-sEbppxiL7vYxdhy7-QXg@git.unistra.fr/fseel/projet-master-23-24.git
+  - cd projet-master-23-24/ && git checkout origin/monitoring && cd ..
+  - git config --system --add safe.directory '*'
+
+  # On installe node_exporter
+  - wget https://github.com/prometheus/node_exporter/releases/download/v1.2.2/node_exporter-1.2.2.linux-amd64.tar.gz
+  - tar xvfz node_exporter-1.2.2.linux-amd64.tar.gz
+  - mv node_exporter-1.2.2.linux-amd64/node_exporter .
+  - rm -rf node_exporter-1.2.2.linux-amd64*
+  - chmod +x node_exporter
+
+  # On configure node_exporter comme un service
+  - cp -r projet-master-23-24/monitoring/client/node_exporter.service /etc/systemd/system/node_exporter.service
+
+  # On démarre node_exporter
+  - systemctl daemon-reload
+  - systemctl start node_exporter.service

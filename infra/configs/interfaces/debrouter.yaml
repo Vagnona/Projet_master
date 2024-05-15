@@ -1,0 +1,265 @@
+network:
+  version: 2
+  ethernets:
+    ens3:
+      dhcp4: true
+      addresses: []
+      match:
+          macaddress: fa:16:3e:ad:41:2b
+      set-name: ens3
+      mtu: 1400
+    ens42:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: 	fa:16:3e:93:8e:6b
+      set-name: ens42
+      mtu: 1400
+    ens43:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:2b:95:e5
+      set-name: ens43
+      mtu: 1400
+    ens44:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:ad:b9:32
+      set-name: ens44
+      mtu: 1400
+    ens45:
+      dhcp4: false
+      addresses: []
+      mtu: 1400
+    ens46:
+      dhcp4: false
+      addresses: []
+      mtu: 1400
+    ens47:
+      dhcp4: false
+      addresses: []
+      mtu: 1400
+    ens48:
+      dhcp4: false
+      addresses: []
+      mtu: 1400
+    ens49:
+      dhcp4: false
+      addresses: []
+      mtu: 1400
+    ens410:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:f4:a9:8f
+      set-name: ens410
+      mtu: 1400
+    ens411:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:f0:c3:1b
+      set-name: ens411
+      mtu: 1400
+    ens412:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:e5:54:2b
+      set-name: ens412
+      mtu: 1400
+    ens413:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:31:f7:3d
+      set-name: ens413
+      mtu: 1400
+    ens414:
+      dhcp4: false
+      addresses: []
+      match:
+          macaddress: fa:16:3e:4c:cc:bf
+      set-name: ens414
+      mtu: 1400
+    ens415:
+      dhcp4: false
+      addresses: []
+      mtu: 1400
+  tunnels:
+    vxlan2:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 2
+      port: 9001
+    vxlan3:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 3
+      port: 9001
+    vxlan4:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 4
+      port: 9001
+    vxlan5:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 5
+      port: 9001
+    vxlan6:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 6
+      port: 9001
+    vxlan7:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 7
+      port: 9001
+    vxlan8:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 8
+      port: 9001
+    vxlan9:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 9
+      port: 9001
+    vxlan10:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 10
+      port: 9001
+    vxlan11:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 11
+      port: 9001
+    vxlan12:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 12
+      port: 9001
+    vxlan12:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 12
+      port: 9001
+    vxlan13:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 13
+      port: 9001
+    vxlan14:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 14
+      port: 9001
+    vxlan15:
+      mode: vxlan
+      local: 10.0.1.2
+      mac-learning: false
+      id: 15
+      port: 9001
+  bridges:
+    vmbr2:
+      interfaces: [ens42,vxlan2]
+      mtu: 1400
+      parameters:
+        stp: false
+        #priority: 100
+    vmbr3:
+      interfaces: [ens43,vxlan3]
+      mtu: 1400
+      addresses: 
+        - "10.2.0.4/16"
+      routes:
+        - to: 10.2.0.0/16
+          via: 10.2.255.254
+          metric: 100
+        - to: 10.2.0.0/8
+          via: 10.2.255.254
+          metric: 120
+      nameservers:
+        search: [pm2023]
+        addresses: [10.2.255.254]
+      parameters:
+          stp: false
+    vmbr4:
+      interfaces: [vxlan4,ens44]
+      mtu: 1400
+      parameters:
+        stp: false
+    vmbr5:
+      interfaces: [ens45,vxlan5]
+      mtu: 1400
+      parameters:
+        stp: false
+    vmbr6:
+      interfaces: [ens46,vxlan6]
+      mtu: 1400
+      parameters:
+        stp: false
+    vmbr7:
+      interfaces: [ens47,vxlan7]
+      mtu: 1400
+      parameters:
+        stp: false
+    vmbr8:
+      interfaces: [ens48,vxlan8]
+      mtu: 1400
+      parameters:
+        stp: false
+    vmbr9:
+      interfaces: [ens49,vxlan9]
+      mtu: 1400
+      parameters:
+        stp: false
+    vmbr10:
+      interfaces: [ens410,vxlan10]
+      mtu: 1400
+      parameters:
+        stp: false
+    vmbr11:
+      interfaces: [ens411,vxlan11]
+      mtu: 1400
+      parameters:
+        stp: false
+    vmbr12:
+      interfaces: [ens412,vxlan12]
+      mtu: 1400
+      parameters:
+        stp: false
+    vmbr13:
+      interfaces: [ens413,vxlan13]
+      mtu: 1400
+      parameters:
+        stp: false
+    vmbr14:
+      interfaces: [ens414,vxlan14]
+      mtu: 1400
+      parameters:
+        stp: false
+    vmbr15:
+      interfaces: [ens415,vxlan15]
+      mtu: 1400
+      parameters:
+        stp: false

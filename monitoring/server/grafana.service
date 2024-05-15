@@ -1,0 +1,10 @@
+[Unit]
+Description=Grafana Agent
+
+[Service]
+User=root
+ExecStart=/bin/sh -c '/root/grafana/bin/grafana-server --config=/root/grafana/conf/defaults.ini --homepath=/root/grafana'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

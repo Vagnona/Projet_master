@@ -1,0 +1,90 @@
+	/* Section infos compte */
+#secCmpt {
+	flex-direction: column;
+	background-color: #ffffff !important;
+	box-shadow: 0 15px 20px -15px #cecece !important;
+	height: 100%;
+	padding: 15px 0;
+}
+
+	/* Section formulaire */
+form > button {
+	grid-column: span 2;
+}
+#msgErr {
+	margin: 0 0 20px 0;
+}
+
+	/* Bannière cookie */
+#secCookie {
+	display: none !important;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: 0;
+	width: 100vw;
+	padding: 20px 0;
+	background-color: #ffffff;
+	border-radius: 10px 10px 0 0;
+	box-shadow: 0 15px 20px 15px #cecece;
+	z-index: 100;
+}
+#secCookie > button {
+	width: 20%;
+	margin-top: 20px;
+}
+#secCookie > p {
+	font-size: 16px;
+	margin: 0 20px 10px 20px;
+}
+
+
+/* Version tablette et mobile */
+@media screen and (max-width: 950px) {
+	/* Corps */
+	#corps {
+		top: calc(72px + 2 * 10px);
+		min-height: calc(100vh - (72px + 2 * 10px) - 85px);
+	}
+
+	/* Section création compte */
+		/* Section formulaire */
+	#secForm > form {
+		width: 80%;
+	}
+
+		/* Bouton d'enregistrement */
+	form > button:last-child {
+		margin-top: 30px;
+	}
+
+	/* Footer */
+	footer {
+		margin-top: calc(72px + 2 * 10px);
+	}
+
+	/* Bannière cookie */
+	#secCookie > button {
+		width: 70%;
+		margin-top: 20px;
+	}
+	#secCookie > h1 {
+		font-size: 18px;
+	}
+	#secCookie > p {
+		font-size: 15px;
+	}
+}
+
+
+/* Thème sombre */
+@media (prefers-color-scheme: dark) {
+	/* Banière cookie */
+	#secCookie {
+		background-color: #000000;
+		color: #ffffff;
+		box-shadow: 0 15px 20px 15px #080808;
+	}
+}

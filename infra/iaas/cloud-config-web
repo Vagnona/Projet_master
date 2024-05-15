@@ -1,0 +1,70 @@
+#cloud-config
+users:
+  - name: matth
+    passwd: $1$mM48WZHt$nCaFoxTmnWN.fgX1eJ.8I.
+    groups: users,wheel
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+bootcmd:
+  - loadkeys fr
+
+repo_update: true
+repo_upgrade: all
+yum_repos:
+  mongodb:
+    name: MongoDB Repository
+    baseurl: https://repo.mongodb.org/yum/redhat/9/mongodb-org/7.0/$basearch/
+    enabled: true
+    gpgcheck: true
+    gpgkey: https://www.mongodb.org/static/pgp/server-7.0.asc
+  docker:
+    name: docker
+    baseurl: https://download.docker.com/linux/centos/9/$basearch/stable
+    enabled: true
+    gpgcheck: true
+    gpgkey: https://download.docker.com/linux/centos/gpg
+
+package_upgrade: true
+packages:
+  - vim
+  - git
+  - httpd
+  - php
+  - php-pear
+  - php-devel
+  - mongodb-org-server
+  - mongodb-mongosh
+  - docker-ce
+
+runcmd:
+  - export HOME="/root"
+  - 'echo "apache ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers'
+  - echo -e "SELINUX=disabled\nSELINUXTYPE=targeted" > /etc/selinux/config
+  - setenforce 0
+  - systemctl enable docker
+  - systemctl start docker
+  - pecl install mongodb
+  - echo "extension=mongodb.so" >> /etc/php.ini
+  - cd /var/www/html/
+  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  - php composer-setup.php
+  - php -r "unlink('composer-setup.php');"
+  - mv composer.phar /bin/composer
+  - composer require mongodb/mongodb
+  - cd /
+  - git clone https://user:glpat-sEbppxiL7vYxdhy7-QXg@git.unistra.fr/fseel/projet-master-23-24.git
+  - git config --system --add safe.directory '*'
+  - cp -r projet-master-23-24/site/* /var/www/html/
+  - echo -e "<?php\nphpinfo();\n?>" > /var/www/html/phpinfo.php
+  - cd projet-master-23-24/bdd-mongo/
+  - ./setup.sh && ./start.sh
+  - cd /
+  - cd projet-master-23-24 && git checkout infra && cd ..
+  - mkdir /var/www/html/webhook && echo -e "#!/bin/bash\nsudo git -C /projet-master-23-24 pull\nsudo cp -r /projet-master-23-24/site/* /var/www/html/" > /var/www/html/webhook/webhook.sh
+  - chmod 777 /var/www/html/webhook/webhook.sh
+  - cat projet-master-23-24/infra/iaas/add_hook.txt >> /etc/httpd/conf/httpd.conf
+  - systemctl enable httpd
+  - systemctl start httpd
+  - cp projet-master-23-24/infra/iaas/test_bdd.php /var/www/html/
+  - cp projet-master-23-24/infra/iaas/hostname.php /var/www/html/
+  - cd projet-master-23-24 && git checkout main && cd ..

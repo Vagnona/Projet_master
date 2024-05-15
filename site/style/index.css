@@ -1,0 +1,1019 @@
+/* Général */
+@font-face {
+	font-family: "Open Sans";
+	font-display: swap;
+	src: url("polices/open-sans-600.woff2") format("woff2"),
+		url("polices/open-sans-600.woff") format("woff");
+}
+html {
+	-webkit-tap-highlight-color: transparent;
+	outline: none;
+}
+* {
+	scrollbar-color: #cdcdcd #f0f0f0;
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
+}
+body {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	color: #000000;
+	background-color: #f2f1f5;
+	font-family: "Open Sans", Arial, sans-serif;
+}
+h1 {
+	width: 80%;
+	margin-top: 0;
+	padding-bottom: 10px;
+	font-size: 18px;
+	font-weight: normal;
+	text-align: center;
+	border-style: solid;
+	border-width: 0 0 4px 0;
+	border-image: radial-gradient(#000000, #ffffff) 1;
+}
+p {
+	font-size: 16px;
+}
+
+	/* Boutons dropdown */
+.dropbtn {
+	background-color: #04aa6d;
+	color: #ffffff;
+	font-size: 16px;
+	width: 50px;
+	height: 72px;
+	padding: 0;
+	border: none;
+	transition: background-color 0.2s ease-in-out;
+}
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+.dropdownContent {
+	display: none;
+	position: absolute;
+	right: 0;
+	min-width: fit-content;
+	border-radius: 10px;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+	background-color: rgba(255, 255, 255, 0.7);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	z-index: 10;
+	max-height: calc(45px * 3);
+	overflow-y: auto;
+}
+.dropdownContent button,
+.dropdownContent a {
+	display: block;
+	width: 100%;
+	border: none;
+	padding: 12px 24px 12px 12px;
+	border-radius: 10px;
+	background-color: unset;
+	text-decoration: none;
+	text-align: start;
+	font-size: 15px;
+	white-space: nowrap;
+	color: #000000;
+	font-family: "Open Sans", Arial, sans-serif;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+}
+.dropdownContent button:hover,
+.dropdownContent a:hover {
+	color: #000000;
+	background-color: rgba(220, 220, 220, 0.5);
+	transition: background-color 0.2s ease-in-out;
+}
+.dropdownContent button:active,
+.dropdownContent a:active,
+.dropdownContent .selected {
+	background-color: rgba(200, 200, 200, 0.5);
+	transition: background-color 0.2s ease-in-out;
+}
+.dropdown:hover .dropdownContent {
+	display: block;
+}
+.dropdown:hover .dropbtn {
+	background-color: #3e8e41;
+	transition: background-color 0.2s ease-in-out;
+}
+
+	/* Tableaux */
+.tableau {
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+	padding-bottom: 10px;
+}
+.tableau > div {
+	display: grid;
+	gap: 2px 0;
+	width: calc(100% - 20px);
+	padding: 0 10px;
+	overflow: unset;
+}
+.tableau > div:last-child {
+	padding-top: 2px;
+	overflow: auto;
+}
+.cellule {
+	display: flex;
+	flex-direction: column;
+	font-size: 14px;
+	width: calc(100% - 10px);
+	padding: 15px 5px;
+	background-color: #ffffff;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+.titre {
+	background-color: #04aa6d !important;
+	color: #ffffff;
+}
+#secMeteo > div > .cellule:nth-child(22n+1),
+#secMeteo > div > .cellule:nth-child(22n+2),
+#secMeteo > div > .cellule:nth-child(22n+3),
+#secMeteo > div > .cellule:nth-child(22n+4),
+#secMeteo > div > .cellule:nth-child(22n+5),
+#secMeteo > div > .cellule:nth-child(22n+6),
+#secMeteo > div > .cellule:nth-child(22n+7),
+#secMeteo > div > .cellule:nth-child(22n+8),
+#secMeteo > div > .cellule:nth-child(22n+9),
+#secMeteo > div > .cellule:nth-child(22n+10),
+#secMeteo > div > .cellule:nth-child(22n+11),
+#secTableau > div > .cellule:nth-child(12n+1),
+#secTableau > div > .cellule:nth-child(12n+2),
+#secTableau > div > .cellule:nth-child(12n+3),
+#secTableau > div > .cellule:nth-child(12n+4),
+#secTableau > div > .cellule:nth-child(12n+5),
+#secTableau > div > .cellule:nth-child(12n+6) {
+	background-color: #eeeeee;
+}
+#secMeteo > div > .cellule:nth-child(22n+12),
+#secMeteo > div > .cellule:nth-child(22n+13),
+#secMeteo > div > .cellule:nth-child(22n+14),
+#secMeteo > div > .cellule:nth-child(22n+15),
+#secMeteo > div > .cellule:nth-child(22n+16),
+#secMeteo > div > .cellule:nth-child(22n+17),
+#secMeteo > div > .cellule:nth-child(22n+18),
+#secMeteo > div > .cellule:nth-child(22n+19),
+#secMeteo > div > .cellule:nth-child(22n+20),
+#secMeteo > div > .cellule:nth-child(22n+21),
+#secMeteo > div > .cellule:nth-child(22n+22),
+#secTableau > div > .cellule:nth-child(12n+7),
+#secTableau > div > .cellule:nth-child(12n+8),
+#secTableau > div > .cellule:nth-child(12n+9),
+#secTableau > div > .cellule:nth-child(12n+10),
+#secTableau > div > .cellule:nth-child(12n+11),
+#secTableau > div > .cellule:nth-child(12n+12) {
+	background-color: #fafafa;
+}
+#secMeteo > div > .cellule:nth-child(11n+1),
+#secTableau > div > .cellule:nth-child(6n+1) {
+	border-radius: 10px 0 0 10px;
+}
+#secMeteo > div > .cellule:nth-child(11n+11),
+#secTableau > div > .cellule:nth-child(6n+6) {
+	border-radius: 0 10px 10px 0;
+}
+
+/* Header */
+header {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+	justify-content: space-between;
+	width: 100vw;
+	border-radius: 0 0 10px 10px;
+	box-shadow: 0 15px 20px -15px #cecece;
+}
+header::before {
+	border-radius: 0 0 10px 10px;
+}
+header::before,
+.ddHeader::before {
+	display: block;
+	position: absolute;
+	content: "\00A0";
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.7);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	z-index: -1;
+}
+
+	/* Logo */
+header > a,
+header > a > picture > img {
+	width: 144px;
+	height: 72px;
+	border-radius: 0 0 0 10px;
+	cursor: pointer;
+}
+
+	/* Sous-sections (choix champs, choix utilisateur) */
+header > section {
+	display: flex;
+	justify-content: right;
+	width: calc(50% - 72px);
+}
+header > section > * {
+	cursor: auto;
+}
+header > section > p,
+.options > div > p {
+	font-size: 16px;
+	line-height: 72px;
+	margin: 0;
+	padding: 0 10px 0 0;
+	text-align: end;
+	overflow-x: scroll;
+	white-space: nowrap;
+}
+header > section:last-child .dropbtn {
+	border-radius: 0 0 10px 0;
+}
+#selectCmpt > a {
+	width: calc(100% - 30px);
+	padding: 12px 18px 12px 12px;
+}
+.ddHeader {
+	background-color: unset;
+	-webkit-backdrop-filter: unset;
+	backdrop-filter: unset;
+}
+
+/* Corps */
+#corps {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	top: 72px;
+	min-height: calc(100vh - 72px - 85px);
+}
+#corps > section {
+	display: flex;
+	align-items: center;
+	width: 80%;
+	margin-top: 36px;
+	background-color: #ffffff;
+	border-radius: 10px;
+	box-shadow: 0 15px 20px -15px #cecece;
+	z-index: 10;
+}
+#corps > section:last-child {
+	margin-bottom: 36px;
+}
+
+	/* Container verticaux */
+.containerSecVerti,
+.containerDoubleVerti {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	padding: 20px 0;
+	background-color: rgba(255, 255, 255, 0.5) !important;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	border-radius: 10px;
+	box-shadow: 0 15px 20px -15px #cecece;
+}
+.containerSecVerti > h1,
+.containerDoubleVerti > h1 {
+	margin-bottom: 20px;
+}
+
+		/* Simple */
+.containerSecVerti > section {
+	width: calc(100% - 10px);
+}
+
+		/* Double */
+.containerDoubleVerti {
+	width: calc(50% - 10px);
+	padding: 20px 0;
+}
+.containerDoubleVerti > section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+.containerDoubleVerti > section > div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 60%;
+	padding: 15px 0;
+	text-align: center;
+	border-radius: 10px;
+	box-shadow: 0 15px 20px -15px #cecece;
+	margin-bottom: 5px;
+}
+.containerDoubleVerti > section > div:last-child {
+	margin-bottom: 0;
+}
+.containerDoubleVerti > section > div > h1 {
+	margin-bottom: 15px;
+}
+.containerDoubleVerti > section > div > p {
+	margin: 0;
+}
+
+	/* Section container informations/moyennes */
+#secInfosMoy {
+	background-color: unset !important;
+	box-shadow: unset !important;
+	justify-content: space-between;
+	height: fit-content;
+}
+
+		/* Section informations */
+#secInfos > section > div {
+	background-color: rgba(4, 169, 109, 0.6);
+}
+#secInfos > section > div > h1 {
+	border-image: radial-gradient(#084f35, #7fc7a7) 1;
+}
+#secInfos > section > div:nth-child(2) > div {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	width: 100%;
+}
+#secInfos > section > div > div > p {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0;
+}
+#secInfos > section > div:nth-child(2) > div > p:first-child,
+#secInfos > section > div:nth-child(2) > div > p:last-child {
+	width: 40%
+}
+
+			/* Etats du champ */
+.etatAcceptable {
+	background-color: rgba(144, 169, 4, 0.6) !important;
+}
+.etatAcceptable > h1 {
+	border-image: radial-gradient(#032116, #bdc873) 1 !important;
+}
+
+.etatDegrade {
+	background-color: rgba(169, 122, 4, 0.6) !important;
+}
+.etatDegrade > h1 {
+	border-image: radial-gradient(#5a5a00, #c4ad70) 1 !important;
+}
+
+.etatHorsService {
+	background-color: rgba(169, 4, 4, 0.6)!important;
+}
+.etatHorsService > h1 {
+	border-image: radial-gradient(#5a0000, #bc6b69) 1 !important;
+}
+
+		/* Section moyennes */
+			/* Température */
+#secMoyennes > section > div:first-child {
+	background-color: rgba(160, 179, 255, 0.6);
+}
+#secMoyennes > section > div:first-child > h1 {
+	border-image: radial-gradient(#0033ff, #c3ccf7) 1;
+}
+
+			/* Humidité */
+#secMoyennes > section > div:nth-child(2) {
+	background-color: rgba(255, 196, 133, 0.6);
+}
+#secMoyennes > section > div:nth-child(2) > h1 {
+	border-image: radial-gradient(#df5d00, #f4d8b7) 1;
+}
+
+			/* Luminosité */
+#secMoyennes > section > div:last-child {
+	background-color: rgba(255, 220, 130, 0.6);
+}
+#secMoyennes > section > div:last-child > h1 {
+	border-image: radial-gradient(#c28b00, #f6e5b6) 1;
+}
+
+	/* Section graphique */
+#secGraph {
+	display: flex;
+	flex-direction: column;
+}
+
+		/* Options du graphique */
+.options {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	box-shadow: 0 15px 20px -15px #cecece;
+	border-radius: 10px;
+	z-index: 1;
+}
+.options > div {
+	display: flex;
+	width: fit-content;
+}
+.options > div > p {
+	text-align: center;
+}
+.options > div:first-child > p,
+.options > div:nth-child(2) > p {
+	width: 135px;
+}
+.options > div:last-child > p {
+	width: 100px;
+}
+.options > div > p {
+	width: fit-content;
+	line-height: 60px;
+	padding-left: 10px;
+}
+.options > div .dropbtn {
+	width: 50px;
+	height: 60px;
+}
+.options > div:first-child > p {
+	border-radius: 10px 0 0 10px;
+}
+.options > div:last-child .dropbtn {
+	border-radius: 0 10px 10px 0;
+}
+
+		/* Graphique */
+#graph {
+	width: 100%;
+	max-height: 100vh;
+	aspect-ratio: 3/1;
+	margin-bottom: 10px;
+}
+.xtick > text,
+.ytick > text,
+.hovertext > text {
+	font-size: 14px !important;
+}
+.plotly-notifier {
+	top: calc(72px + 20px) !important;
+	right: 40px !important;
+}
+.notifier-note {
+	background-color: rgba(4, 169, 109, 0.6) !important;
+	-webkit-backdrop-filter: blur(10px) !important;
+	backdrop-filter: blur(10px) !important;
+	border: none !important;
+	border-radius: 10px !important;
+	box-shadow: 0 15px 20px -15px #cecece !important;
+}
+.notifier-close,
+.notifier-note > p > span {
+	color: #000000 !important;
+}
+.notifier-close:hover {
+	color: #333333 !important
+}
+.notifier-close:active {
+	color: #676767 !important
+}
+
+	/* Section tableau */
+#secTableau {
+	max-height: 60vh;
+}
+#secTableau > div {
+	grid-template-columns: repeat(6, 1fr);
+}
+.errMesure {
+	color: #d30000;
+}
+
+	/* Section météo */
+#secMeteo {
+	max-height: 60vh;
+}
+#secMeteo > div {
+	grid-template-columns: 130px
+		repeat(4, minmax(calc((100% - (120px + 70px * 2))/10), 1fr)) 70px 120px
+		repeat(4, minmax(calc((100% - (120px + 70px * 2))/10), 1fr));
+}
+#secMeteo .cellule > p {
+	font-size: 14px;
+	margin: 0;
+}
+#secMeteo > div > .titre:first-child {
+	display: flex;
+	flex-direction: column;
+	padding: 0 10px 0 0;
+}
+#secMeteo > div > .titre:first-child > p {
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	margin: 0;
+	padding-top: 5px;
+	height: 50%;
+}
+
+			/* Options de la météo */
+#ddDuree {
+	width: 100%;
+	height: 50%;
+}
+#ddDuree > .dropbtn {
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+}
+#ddDuree > .dropdownContent {
+	left: 0;
+}
+
+	/* Section export de données */
+#export {
+	display: flex;
+	justify-content: center;
+}
+#export > button {
+	font-family: "Open Sans", Arial, sans-serif;
+	font-size: 14px;
+	background-color: #fbfbfb;
+	width: 20%;
+	height: 40px;
+	margin-top: 20px;
+	padding: 4px;
+	border: 1px solid #cecece;
+	border-radius: 5px;
+}
+#export > button:hover {
+	cursor: pointer;
+	background-color: #f6f6f6;
+}
+#export > button:active {
+	background-color: #e6e6e6;
+}
+
+/* Footer */
+footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 100vw;
+	height: 85px;
+	z-index: 1;
+	margin-top: 72px;
+	background-color: rgba(255, 255, 255, 0.7);
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	border-radius: 10px 10px 0 0;
+	box-shadow: 0 15px 20px 15px #cecece;
+}
+footer > p {
+	font-size: 16px;
+	margin: 0;
+	z-index: 10;
+}
+footer > a,
+#secCookie > a {
+	color: #000000;
+	text-decoration: underline;
+	text-underline-offset: 4px;
+}
+footer > a:hover,
+#secCookie > a:hover {
+	color: #333333;
+}
+footer > a:active,
+#secCookie > a:active {
+	color: #676767
+}
+
+/* Version élargie (petits écrans ordinateurs) */
+@media screen and (max-width: 1300px) {
+	/* Corps */
+	#corps > section {
+		width: 95%;
+	}
+}
+
+
+/* Version tablette et mobile */
+@media screen and (max-width: 950px) {
+	/* Général */
+	h1,
+	p {
+		font-size: 15px;
+	}
+
+		/* Boutons dropdown */
+	.dropbtn {
+		width: 60px !important;
+		height: 40px !important;
+	}
+	.dropdownContent button {
+		padding: 10px 30px 10px 10px;
+	}
+
+		/* Tableau */
+	.tableau {
+		overflow-x: auto;
+		overflow-y: unset !important;
+		max-height: 50vh;
+	}
+	.tableau > div {
+		overflow: unset !important;
+	}
+	.tableau > div:first-child {
+		position: sticky;
+		top: 0;
+	}
+
+		/* Vignettes */
+	#secInfos > div,
+	#secMoyennes > div {
+		width: calc(33.33% - 3px);
+		height: 160px;
+		padding: 10px 0;
+	}
+
+	/* Header */
+	header {
+		transform-origin: top;
+		transform: scaleY(1);
+		transition: transform 0.2s ease-in-out;
+	}
+	.miseEchelleHeader {
+		transform: scaleY(0.3);
+	}
+
+		/* Logo */
+	header > a {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		margin: 10px 0;
+	}
+	header > a > picture > img {
+		width: 288px;
+		border-radius: 10px;
+	}
+	.masqueLogo {
+		opacity: 0;
+	}
+
+		/* Sous-sections (choix champs, choix utilisateur) */
+	header > section {
+		width: calc(50% - 5px);
+		transform-origin: bottom;
+		transform: scaleY(1);
+		transition: transform 0.2s ease-in-out;
+	}
+	.miseEchelleSection {
+		transform: scaleY(3.3);
+	}
+	header > section > p,
+	.options > div > p {
+		width: fit-content;
+		line-height: 40px;
+		padding-right: 10px;
+	}
+	header > section:nth-child(2) {
+		padding-left: 5px;
+		justify-content: left;
+	}
+
+	/* Corps */
+	#corps {
+		top: calc(72px + 40px + 20px);
+		min-height: calc(100vh - (72px + 40px + 20px));
+	}
+	#corps > section {
+		margin-top: 20px;
+	}
+	#corps > section:last-child {
+		margin-bottom: 20px;
+	}
+
+		/* Container verticaux */
+			/* Double */
+	.containerDoubleVerti {
+		width: 100%;
+	}
+	.containerDoubleVerti > section {
+		flex-direction: row;
+		justify-content: space-evenly;
+	}
+	.containerDoubleVerti > section > div {
+		width: calc(33% - 3px);
+		height: 130px;
+		margin: 0;
+	}
+	.containerDoubleVerti > section > div > h1,
+	.containerDoubleVerti > section > div > p,
+	.containerDoubleVerti > section > div > div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 50%;
+	}
+
+		/* Section container informations/moyennes */
+	#secInfosMoy {
+		flex-direction: column;
+	}
+	#secInfosMoy > section:first-child {
+		margin-bottom: 20px;
+	}
+
+		/* Section graphique */
+			/* Options du graphique */
+	.options {
+		flex-wrap: wrap;
+	}
+	.options > div:last-child > p {
+		width: 135px;
+	}
+	.options > div > p {
+		font-size: 15px;
+		line-height: 40px;
+	}
+
+			/* Graphique */
+	#graph {
+		min-height: 35vh;
+	}
+	.xtick > text,
+	.ytick > text {
+		font-size: 12.5px !important;
+	}
+	.hovertext > text {
+		font-size: 11.5px !important;
+	}
+	.plotly-notifier {
+		top: calc(40px + 20px) !important;
+	}
+
+		/* Section tableau */
+	#secTableau > div {
+		grid-template-columns: minmax(60px, 1fr) 150px 80px
+			repeat(3, minmax(90px, 1fr));
+	}
+
+		/* Section météo */
+	#secMeteo {
+		width: 100%;
+	}
+	#secMeteo > div {
+		grid-template-columns: 100px repeat(5, 80px) 120px repeat(4, 80px);
+	}
+
+				/* Options de la météo */
+	#ddDuree > .dropbtn {
+		width: 100% !important;
+		height: 100% !important;
+	}
+
+		/* Footer */
+	#export > button {
+		width: 50%;
+
+	}
+
+	/* Footer */
+	footer {
+		margin-top: calc(72px + 40px + 20px);
+	}
+	footer > p {
+		font-size: 15px;
+	}
+}
+
+
+/* Thème sombre */
+@media (prefers-color-scheme: dark) {
+	/* Général */
+	* {
+		scrollbar-color: #1a1a1a #333333;
+	}
+	body {
+		background-color: #1c1c1e;
+		color: #bebebe;
+	}
+	h1 {
+		border-image: radial-gradient(#ececec, #000000) 1;
+	}
+
+		/* Boutons dropdown */
+	.dropdownContent {
+		box-shadow: 0 8px 16px 0 rgba(107, 107, 107, 0.2);
+		background-color: rgba(57, 57, 57, 0.7);
+	}
+	.dropdownContent button,
+	.dropdownContent a {
+		color: #ffffff;
+	}
+	.dropdownContent button:hover,
+	.dropdownContent a:hover {
+		background-color: rgba(80, 80, 80, 0.5);
+		color: #ffffff !important;
+	}
+	.dropdownContent button:active,
+	.dropdownContent a:active,
+	.dropdownContent .selected {
+		background-color: rgba(111, 111, 111, 0.5);
+	}
+
+		/* Tableaux */
+	#secMeteo > div > .cellule:nth-child(22n+1),
+	#secMeteo > div > .cellule:nth-child(22n+2),
+	#secMeteo > div > .cellule:nth-child(22n+3),
+	#secMeteo > div > .cellule:nth-child(22n+4),
+	#secMeteo > div > .cellule:nth-child(22n+5),
+	#secMeteo > div > .cellule:nth-child(22n+6),
+	#secMeteo > div > .cellule:nth-child(22n+7),
+	#secMeteo > div > .cellule:nth-child(22n+8),
+	#secMeteo > div > .cellule:nth-child(22n+9),
+	#secMeteo > div > .cellule:nth-child(22n+10),
+	#secMeteo > div > .cellule:nth-child(22n+11),
+	#secTableau > div > .cellule:nth-child(12n+1),
+	#secTableau > div > .cellule:nth-child(12n+2),
+	#secTableau > div > .cellule:nth-child(12n+3),
+	#secTableau > div > .cellule:nth-child(12n+4),
+	#secTableau > div > .cellule:nth-child(12n+5),
+	#secTableau > div > .cellule:nth-child(12n+6) {
+		background-color: #3c3c3c;
+	}
+	#secMeteo > div > .cellule:nth-child(22n+12),
+	#secMeteo > div > .cellule:nth-child(22n+13),
+	#secMeteo > div > .cellule:nth-child(22n+14),
+	#secMeteo > div > .cellule:nth-child(22n+15),
+	#secMeteo > div > .cellule:nth-child(22n+16),
+	#secMeteo > div > .cellule:nth-child(22n+17),
+	#secMeteo > div > .cellule:nth-child(22n+18),
+	#secMeteo > div > .cellule:nth-child(22n+19),
+	#secMeteo > div > .cellule:nth-child(22n+20),
+	#secMeteo > div > .cellule:nth-child(22n+21),
+	#secMeteo > div > .cellule:nth-child(22n+22),
+	#secTableau > div > .cellule:nth-child(12n+7),
+	#secTableau > div > .cellule:nth-child(12n+8),
+	#secTableau > div > .cellule:nth-child(12n+9),
+	#secTableau > div > .cellule:nth-child(12n+10),
+	#secTableau > div > .cellule:nth-child(12n+11),
+	#secTableau > div > .cellule:nth-child(12n+12) {
+		background-color: #1b1b1b;
+	}
+
+	/* Header */
+	header {
+		box-shadow: 0 15px 20px -15px #080808;
+	}
+	header::before {
+		background-color: rgba(0, 0, 0, 0.7);
+	}
+
+		/* Sous-sections (choix champs, choix utilisateur) */
+	.ddHeader::before {
+		background-color: rgba(57, 57, 57, 0.7);
+	}
+
+	/* Corps */
+	#corps > section,
+	#secInfos > div,
+	#secMeteo {
+		background-color: #000000;
+		box-shadow: 0 15px 20px -15px #080808;
+	}
+
+		/* Container verticaux */
+	.containerSecVerti,
+	.containerDoubleVerti {
+		background-color: rgba(0, 0, 0, 0.5) !important;
+		box-shadow: 0 15px 20px -15px #080808;
+	}
+
+		/* Section container informations/moyennes */
+	.containerDoubleVerti > section > div {
+		box-shadow: 0 15px 20px -15px #080808;
+	}
+	.containerDoubleVerti > section > div > p,
+	.containerDoubleVerti > section > div > h1,
+	.containerDoubleVerti > section > div > div {
+		color: #ffffff;
+	}
+
+			/* Section informations */
+	#secInfos > section > div > h1 {
+		border-image: radial-gradient(#032116, #2f694a) 1;
+	}
+
+				/* Etats du champ */
+	.etatAcceptable > h1 {
+		border-image: radial-gradient(#b7cf3f, #5f6b20) 1 !important;
+	}
+	.etatDegrade > h1 {
+		border-image: radial-gradient(#c29630, #675019) 1 !important;
+	}
+	.etatHorsService > h1 {
+		border-image: radial-gradient(#cf2c20, #62140f) 1 !important;
+	}
+
+			/* Section moyennes */
+				/* Température */
+	#secMoyennes > section > div:first-child {
+		background-color: rgba(102, 133, 255, 0.6);
+	}
+	#secMoyennes > section > div:first-child > h1 {
+		border-image: radial-gradient(#00073c, #4c5ba0) 1;
+	}
+
+				/* Humidité */
+	#secMoyennes > section > div:nth-child(2) {
+		background-color: rgba(255, 167, 73, 0.6);
+	}
+	#secMoyennes > section > div:nth-child(2) > h1 {
+		border-image: radial-gradient(#512200, #936b3e) 1;
+	}
+
+				/* Luminosité */
+	#secMoyennes > section > div:last-child {
+		background-color: rgba(255, 200, 61, 0.6);
+	}
+	#secMoyennes > section > div:last-child > h1 {
+		border-image: radial-gradient(#523b00, #9d823f) 1;
+	}
+
+		/* Section graphique */
+				/* Options du graphique */
+	.options {
+		box-shadow: 0 15px 20px -15px #353535;
+	}
+
+				/* Graphique */
+	.notifier-note {
+		box-shadow: 0 8px 16px 0 rgba(107, 107, 107, 0.2) !important;
+	}
+	.notifier-close,
+	.notifier-note > p > span {
+		color: #ffffff !important;
+	}
+	.notifier-close:hover {
+		color: #d3d3d3 !important
+	}
+	.notifier-close:active {
+		color: #a8a8a8 !important
+	}
+
+		/* Section tableau */
+	.errMesure {
+		color: #ff3535;
+	}
+
+		/* Section export de données */
+	#export > button {
+		border: 1px solid #3d3d3d;
+		background-color: #191919;
+	}
+	#export > button:hover {
+		background-color: #222222;
+	}
+	#export > button:active {
+		background-color: #2f2f2f;
+	}
+
+		/* Footer */
+	footer {
+		background-color: rgba(0, 0, 0, 0.7);
+		box-shadow: 0 15px 20px 15px #080808;
+	}
+	footer > p {
+		color: #bebebe;
+	}
+	footer > a,
+	#secCookie > a {
+		color: #bebebe;
+	}
+	footer > a:hover,
+	#secCookie > a:hover {
+		color: #d3d3d3;
+	}
+	footer > a:active,
+	#secCookie > a:active {
+		color: #a8a8a8
+	}
+}

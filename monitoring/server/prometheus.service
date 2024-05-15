@@ -1,0 +1,10 @@
+[Unit]
+Description=Prometheus Agent
+
+[Service]
+User=root
+ExecStart=/bin/sh -c '/root/prometheus --config.file=/root/prometheus.yml'
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

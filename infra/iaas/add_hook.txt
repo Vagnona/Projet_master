@@ -1,0 +1,4 @@
+<Directory "/var/www/html/webhook">
+    Options +ExecCGI
+    AddHandler cgi-script .sh
+</Directory>

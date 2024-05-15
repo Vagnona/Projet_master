@@ -1,0 +1,21 @@
+[Unit]
+Description=ftp server
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker exec %n stop
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull atmoz/sftp
+// docker run -p 9222:22 -v <full_path>/upload:/home/sftp_user/upload -d atmoz/sftp sftp_user:pass:1001
+ExecStart=/usr/bin/docker run --rm --name %n \
+		-v /upload:/home/sftp_user/upload \
+		-p 9222:22 \
+		-d atmoz/sftp sftp_user:pm2324:1001
+
+ExecStop=/usr/bin/docker exec %n stop
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,8 @@
+# Dossiers
+cmake-build-debug
+bin
+build
+stockage
+
+# Dossier masqué
+.idea

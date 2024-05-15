@@ -1,0 +1,49 @@
+#cloud-config
+groups:
+  - sftp
+
+users:
+  - name: matth
+    passwd: $1$mM48WZHt$nCaFoxTmnWN.fgX1eJ.8I.
+    groups: users,wheel
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+  - name: sftp_user
+    passwd: $6$YxETL/jewBSdawmZ$z3KpFD46Tdl0uif2w52TrL4DofgZM0UVp3gsjNej/iHz92worFlGCfMiCmTfHeGfAuB.APXb9IZWKt3N8a3Dx.
+    groups: users,sftp
+    lock_passwd: false
+bootcmd:
+  - loadkeys fr
+ssh_pwauth: true
+
+yum_repos:
+  docker:
+    name: docker
+    baseurl: https://download.docker.com/linux/centos/9/$basearch/stable
+    enabled: true
+    gpgcheck: true
+    gpgkey: https://download.docker.com/linux/centos/gpg
+
+packages:
+  - git
+  - docker-ce
+
+runcmd:
+  - mkdir -p /data/sftp_user/upload
+  - chown -R root.sftp /data
+  - chown -R sftp_user.sftp /data/sftp_user/upload
+  - echo "Match Group sftp" >> /etc/ssh/sshd_config
+  - echo "ChrootDirectory /data/%u" >> /etc/ssh/sshd_config
+  - echo "ForceCommand internal-sftp" >> /etc/ssh/sshd_config
+  - systemctl restart sshd
+  - systemctl enable docker
+  - systemctl start docker
+  - git clone https://user:glpat-sEbppxiL7vYxdhy7-QXg@git.unistra.fr/fseel/projet-master-23-24.git /pm
+  - cd /pm/bdd-mongo/copy-script
+  - cp start_python.service /etc/systemd/system/
+  - cat add_to_cf >> ../cf-primary
+  - docker build . -t ubuntu_mine
+  - cd ..
+  - ./setup.sh && ./start.sh
+  - systemctl enable start_python
+  - systemctl start start_python
